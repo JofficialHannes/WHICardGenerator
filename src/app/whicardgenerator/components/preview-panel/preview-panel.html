@@ -1,0 +1,9 @@
+<div class="preview-card">
+  <h3>Preview</h3>
+  @if (combinedImage()) {
+    <img [src]="combinedImage()" [style]="{'--corner-radius': cornerRadius + 'px'}" alt="Combined image" />
+    <button (click)="downloadRequested.emit()">Download</button>
+  } @else {
+    <div class="preview-placeholder">No preview available</div>
+  }
+</div>

@@ -1,0 +1,27 @@
+<div class="panel-card">
+  <h3>Card Type</h3>
+  <div class="input-group">
+    <label for="cardType">Type</label>
+    <select
+      id="cardType"
+      [ngModel]="cardService.cardType()"
+      (ngModelChange)="onCardTypeChange($event)"
+    >
+      <option value="unit">Unit</option>
+      <option value="support">Support</option>
+      <option value="tactics">Tactics</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label for="faction">Faction</label>
+    <select
+      id="faction"
+      [ngModel]="cardService.faction()"
+      (ngModelChange)="onFactionChange($event)"
+    >
+      @for (factionOption of availableFactions; track factionOption.value) {
+        <option [value]="factionOption.value">{{ factionOption.label }}</option>
+      }
+    </select>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="panel-card">
+  <h3>Cost</h3>
+  <div class="slider-group">
+    <label>Cost <span>{{ cardService.cardCost() }}</span></label>
+    <input
+      type="range"
+      min="0"
+      max="6"
+      step="1"
+      [ngModel]="cardService.cardCost()"
+      (ngModelChange)="onCardCostChange($event)"
+    />
+  </div>
+  <div class="slider-group">
+    <label>Loyalty Cost <span>{{ cardService.cardLoyaltyCost() }}</span></label>
+    <input
+      type="range"
+      min="0"
+      max="5"
+      step="1"
+      [ngModel]="cardService.cardLoyaltyCost()"
+      (ngModelChange)="onCardLoyaltyCostChange($event)"
+      [disabled]="cardService.faction() === 'neutral'"
+    />
+  </div>
+</div>

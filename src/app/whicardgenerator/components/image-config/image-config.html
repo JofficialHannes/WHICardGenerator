@@ -1,0 +1,63 @@
+<div class="panel-card">
+  <h3>Image</h3>
+  <div class="input-group">
+    <label for="cardImage">Image</label>
+    <input
+      id="cardImage"
+      #cardImageInput
+      type="file"
+      accept="image/*"
+      (change)="onCardImageChange($event)"
+    />
+    <button type="button" [disabled]="!cardService.hasCardImageSelected" (click)="removeCardImage()">Remove Image</button>
+  </div>
+
+  <div class="input-group">
+    <label for="backgroundColor">Background Color</label>
+    <input
+      id="backgroundColor"
+      type="color"
+      [ngModel]="cardService.imageConfig().canvasBackgroundColor"
+      (ngModelChange)="onCanvasBackgroundColorChange($event)"
+    />
+  </div>
+
+  <div class="slider-group">
+    <label>X-Position <span>{{ cardService.imageConfig().xPosition }}</span></label>
+    <input
+      type="range"
+      [min]="cardService.minXPosition()"
+      [max]="cardService.maxXPosition()"
+      step="1"
+      [disabled]="!cardService.hasCardImageSelected"
+      [ngModel]="cardService.imageConfig().xPosition"
+      (ngModelChange)="onXPositionChange($event)"
+    />
+  </div>
+
+  <div class="slider-group">
+    <label>Y-Position <span>{{ cardService.imageConfig().yPosition }}</span></label>
+    <input
+      type="range"
+      [min]="cardService.minYPosition()"
+      [max]="cardService.maxYPosition()"
+      step="1"
+      [disabled]="!cardService.hasCardImageSelected"
+      [ngModel]="cardService.imageConfig().yPosition"
+      (ngModelChange)="onYPositionChange($event)"
+    />
+  </div>
+
+  <div class="slider-group">
+    <label>Scale <span>{{ cardService.imageConfig().scale.toFixed(1) }}x</span></label>
+    <input
+      type="range"
+      min="0.1"
+      max="5"
+      step="0.1"
+      [disabled]="!cardService.hasCardImageSelected"
+      [ngModel]="cardService.imageConfig().scale"
+      (ngModelChange)="onScaleChange($event)"
+    />
+  </div>
+</div>

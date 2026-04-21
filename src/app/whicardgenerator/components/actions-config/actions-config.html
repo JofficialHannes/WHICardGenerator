@@ -1,0 +1,8 @@
+<div class="panel-card actions">
+  <button (click)="exportConfig()">Export Config</button>
+  <label class="import-button">
+    Import Config
+    <input type="file" accept="application/json,.json" (change)="onConfigImportChange($event)" />
+  </label>
+  <button type="button" (click)="resetConfig()">Reset</button>
+</div>

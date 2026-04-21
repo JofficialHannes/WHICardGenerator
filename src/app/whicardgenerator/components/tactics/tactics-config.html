@@ -1,0 +1,14 @@
+<div class="panel-card">
+  <h3>Tactics</h3>
+  <div class="slider-group">
+    <label>Effect Strength <span>{{ cardService.tacticsConfig().tacticsPotency }}</span></label>
+    <input
+      type="range"
+      min="1"
+      max="5"
+      step="1"
+      [ngModel]="cardService.tacticsConfig().tacticsPotency"
+      (ngModelChange)="onTacticsPotencyChange($event)"
+    />
+  </div>
+</div>

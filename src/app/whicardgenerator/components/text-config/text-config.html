@@ -1,0 +1,52 @@
+<div class="panel-card">
+  <h3>Text</h3>
+  <div class="input-group">
+    <label for="cardTitle">Title</label>
+    <input
+      id="cardTitle"
+      type="text"
+      [ngModel]="cardService.textConfig().cardTitle"
+      (ngModelChange)="onCardTitleChange($event)"
+    />
+  </div>
+
+  <div class="input-group">
+    <label for="titleFontFamily">Title Font</label>
+    <select
+      id="titleFontFamily"
+      [ngModel]="cardService.textConfig().titleFontFamily"
+      (ngModelChange)="onTitleFontFamilyChange($event)"
+    >
+      @for (font of fontOptions; track font) {
+        <option [value]="font">{{ font }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="input-group">
+    <label for="cardText">Card Text</label>
+    <textarea
+      id="cardText"
+      [ngModel]="cardService.textConfig().cardText"
+      (ngModelChange)="onCardTextChange($event)"
+      rows="5"
+      placeholder="Use <b>bold</b>, <i>italic</i>, or <b><i>both</i></b>"
+    ></textarea>
+    <small class="markup-help">
+      Markup: &lt;b&gt;bold&lt;/b&gt;, &lt;i&gt;italic&lt;/i&gt;, &lt;u&gt;underlined&lt;/u&gt;, &lt;b&gt;&lt;i&gt;combined&lt;/i&gt;&lt;/b&gt;
+    </small>
+  </div>
+
+  <div class="input-group">
+    <label for="textFontFamily">Text Font</label>
+    <select
+      id="textFontFamily"
+      [ngModel]="cardService.textConfig().textFontFamily"
+      (ngModelChange)="onTextFontFamilyChange($event)"
+    >
+      @for (font of fontOptions; track font) {
+        <option [value]="font">{{ font }}</option>
+      }
+    </select>
+  </div>
+</div>

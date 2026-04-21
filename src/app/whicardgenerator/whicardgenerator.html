@@ -1,0 +1,46 @@
+<div class="page-shell">
+  <header class="page-header">
+    <h2>Warhammer Invasion Card Generator</h2>
+  </header>
+
+  <div class="workspace-grid">
+    <section class="controls-panel">
+      <app-card-type-config
+      ></app-card-type-config>
+
+      <app-cost-config
+      ></app-cost-config>
+
+      <app-text-config
+      ></app-text-config>
+
+      @if (cardService.cardType() === 'unit') {
+        <app-unit-config></app-unit-config>
+      } @else if (cardService.cardType() === 'support') {
+        <app-support-config></app-support-config>
+      } @else {
+        <app-tactics-config></app-tactics-config>
+      }
+
+      <app-image-config
+        (cardImageSelected)="onCardImageSelected($event)"
+        (cardImageRemoved)="onCardImageRemoved()"
+      ></app-image-config>
+
+      <app-card-set-config></app-card-set-config>
+
+      <app-actions-config
+        (configImported)="onConfigImported($event)"
+        (resetRequested)="onResetRequested()"
+      ></app-actions-config>
+    </section>
+
+    <aside class="preview-panel">
+      <app-preview-panel
+        [cornerRadius]="cornerRadius"
+        (downloadRequested)="downloadImage()"
+      ></app-preview-panel>
+    </aside>
+  </div>
+</div>
+  

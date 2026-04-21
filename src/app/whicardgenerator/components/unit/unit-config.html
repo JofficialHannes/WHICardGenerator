@@ -1,0 +1,26 @@
+<div class="panel-card">
+  <h3>Unit Stats</h3>
+  <div class="slider-group">
+    <label>Power <span>{{ cardService.unitConfig().unitPower }}</span></label>
+    <input
+      type="range"
+      min="0"
+      max="4"
+      step="1"
+      [ngModel]="cardService.unitConfig().unitPower"
+      (ngModelChange)="onUnitPowerChange($event)"
+    />
+  </div>
+
+  <div class="slider-group">
+    <label>Health <span>{{ cardService.unitConfig().unitHealth }}</span></label>
+    <input
+      type="range"
+      min="1"
+      max="4"
+      step="1"
+      [ngModel]="cardService.unitConfig().unitHealth"
+      (ngModelChange)="onUnitHealthChange($event)"
+    />
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="panel-card">
+  <h3>Card Set</h3>
+
+  <div class="input-group">
+    <label>
+      <input type="checkbox" [checked]="cardService.cardSetConfig().showCardSet" (change)="onShowCardSetChange($event.target.checked)" />
+      Show Card Set Info on Card
+    </label>
+  </div>
+
+  <div class="input-group">
+    <label for="cardSetNumber">Card Number</label>
+    <input 
+      id="cardSetNumber"
+      type="number" 
+      [value]="cardService.cardSetConfig().cardSetNumber" 
+      (change)="onCardSetNumberChange($event.target.value)"
+      min="1"
+      max="999"
+    />
+  </div>
+
+  <div class="input-group">
+    <label for="cardSetSymbolInput">Card Set Symbol</label>
+    <input 
+      id="cardSetSymbolInput"
+      type="file" 
+      accept="image/*" 
+      (change)="onCardSetSymbolFileSelected($event)"
+    />
+    <button 
+      type="button"
+      [disabled]="!cardService.cardSetConfig().cardSetSymbol" 
+      (click)="clearCardSetSymbol()"
+    >
+      Remove Symbol
+    </button>
+  </div>
+
+  <div *ngIf="cardService.cardSetConfig().cardSetSymbol" class="input-group">
+    <p style="margin: 10px 0 5px 0; font-size: 13px;">Symbol Preview:</p>
+    <img [src]="cardService.cardSetConfig().cardSetSymbol" style="max-width: 100px; max-height: 100px; border: 1px solid #ddd; border-radius: 4px; padding: 4px;" alt="Card Set Symbol Preview" />
+  </div>
+</div>
